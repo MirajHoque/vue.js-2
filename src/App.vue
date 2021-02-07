@@ -1,26 +1,27 @@
 <template>
   <div>
     <h1>{{title}}</h1>
-    <P>{{greeting()}}</P>
+    <ninjas></ninjas>
    
   </div>
 </template>
 
 <script>
+import Ninjas from './Ninjas.vue'
 export default {
+  components: {
+    'ninjas': Ninjas
+    //name of the component: object to be component
+    },
   data () {
     return {
       title: 'Vue.js 2'
 
     }
   },
-  methods:{
-    greeting:function(){
-      return 'Hello vue'
-    }
+
   }
 
-}
 </script>
 
 <style>
