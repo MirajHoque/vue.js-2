@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>List of Ninjas</h1>
     <ul>
       <li v-for="elements in ninjas">{{ elements}}</li>
     </ul>
