@@ -3,8 +3,8 @@ import Vue from 'vue'
 import App from './App.vue'
 //import Hi from './App.vue'
 
-import Ninjas from './Ninjas.vue'
-Vue.component('ninjas',Ninjas); //Registering vue component globally
+//import Ninjas from './Ninjas.vue'
+//Vue.component('ninjas',Ninjas); //Registering vue component globally
 
 new Vue({
   el: '#app',
