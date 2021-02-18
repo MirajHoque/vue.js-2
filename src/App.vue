@@ -1,7 +1,10 @@
 <template>
 <div>
   <app-header></app-header>
-  <app-ninjas></app-ninjas>
+  <app-ninjas :ninjas="ninjas"></app-ninjas>
+  <!--
+    <app-ninjas name="data(value)"></app-ninjas>
+  -->
   <app-footer></app-footer>
 </div>
 </template>
@@ -18,6 +21,16 @@ export default {
   },
   data () {
     return{
+       ninjas:[ //araray
+        {name:'Ryu',speciality:'Vue Components',show:'false'}, //objects
+        {name:'Crystal',speciality:'Html Wizardy',show:'false'},
+        {name:'Hitushi',speciality:'Conditionals',show:'false'},
+        {name:'Tango',speciality:'Click Events',show:'false'},
+        {name:'Kami',speciality:'Web Pack',show:'false'},
+        {name:'Yoshi',speciality:'Data Mining',show:'falses'}
+      ]
+      //when show is false never show speciality if it is true then show speciality
+      //
 
     }
 

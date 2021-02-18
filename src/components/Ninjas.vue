@@ -1,7 +1,7 @@
 <template>
   <div id="ninjas">
     <ul>
-        <li v-for="elements in ninjas" v-on:click="elements.show= !elements.show">
+        <li v-for="elements in ninjas" @click="elements.show= !elements.show">
           <h2>{{ elements.name }}</h2>
           <h3 v-show="elements.show">{{ elements.speciality }}</h3>
         </li>
@@ -12,19 +12,18 @@
 <script>
 
 export default {
-
+  /*props: ['ninjas'],
+  props: [which props we want to receive]
+  */
+  props:{
+    ninjas:{ //props we want to receive
+      type: Array,
+      required: true
+    }
+  },
   data () {
     return{
-      ninjas:[ //araray
-        {name:'Ryu',speciality:'Vue Components',show:'false'}, //objects
-        {name:'Crystal',speciality:'Html Wizardy',show:'false'},
-        {name:'Hitushi',speciality:'Conditionals',show:'false'},
-        {name:'Tango',speciality:'Click Events',show:'false'},
-        {name:'Kami',speciality:'Web Pack',show:'false'},
-        {name:'Yoshi',speciality:'Data Mining',show:'falses'}
-      ]
-      //when show is false never show speciality if it is true then show speciality
-      //
+     
 
     }
 
