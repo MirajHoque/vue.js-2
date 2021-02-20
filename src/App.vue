@@ -1,11 +1,14 @@
 <template>
 <div>
-  <app-header></app-header>
+  <app-header :title="title"></app-header>
   <app-ninjas :ninjas="ninjas"></app-ninjas>
+  
   <!--
     <app-ninjas name="data(value)"></app-ninjas>
+    <hr/>
+    <hr>: define themetic break
   -->
-  <app-footer></app-footer>
+  <app-footer :title="title"></app-footer>
 </div>
 </template>
 
@@ -28,9 +31,9 @@ export default {
         {name:'Tango',speciality:'Click Events',show:'false'},
         {name:'Kami',speciality:'Web Pack',show:'false'},
         {name:'Yoshi',speciality:'Data Mining',show:'falses'}
-      ]
+      ],
       //when show is false never show speciality if it is true then show speciality
-      //
+      title: 'Vue Ninjas'
 
     }
 
