@@ -21,7 +21,9 @@ export default {
     },
     methods:{
       changeTitle: function(){
-        this.title="vue wizards"
+        this.$emit('changeTitle','vue wizards');
+        //$emit('name of the events', data passing with events);
+        //$emit(): function allows to pass customs events
 
       }
     }

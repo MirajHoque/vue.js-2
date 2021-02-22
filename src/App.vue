@@ -1,9 +1,10 @@
 <template>
 <div>
-  <app-header :title="title"></app-header>
+  <app-header :title="title" @changeTitle="updateTitle($event)"></app-header>
   <app-ninjas :ninjas="ninjas"></app-ninjas>
   
   <!--
+     <app-header :title="title" @name of the event="value(data passing with events)"></app-header>
     <app-ninjas name="data(value)"></app-ninjas>
     <hr/>
     <hr>: define themetic break
@@ -37,6 +38,11 @@ export default {
 
     }
 
+    },
+    methods:{
+      updateTitle: function(updatedTitle){
+        this.title=updatedTitle
+      }
     }
   }
 
