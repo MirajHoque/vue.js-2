@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { bus } from '../main';
 export default {
   props:{
     title: {
@@ -21,9 +22,11 @@ export default {
     },
     methods:{
       changeTitle: function(){
-        this.$emit('changeTitle','vue wizards');
+       // this.$emit('changeTitle','vue wizards');
         //$emit('name of the events', data passing with events);
         //$emit(): function allows to pass customs events
+        this.title= 'vue wizards';
+        bus.$emit('titleChanged','vue wizards');
 
       }
     }
