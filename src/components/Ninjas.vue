@@ -1,7 +1,7 @@
 <template>
   <div id="ninjas">
     <ul>
-        <li v-for="elements in ninjas" @click="elements.show= !elements.show">
+        <li v-for="elements in ninjas" v-bind:key="elements" @click="elements.show= !elements.show">
           <h2>{{ elements.name }}</h2>
           <h3 v-show="elements.show">{{ elements.speciality }}</h3>
         </li>
@@ -34,7 +34,28 @@ export default {
       {
         this.ninjas.pop();
       }
+    },
+    //lifecycle hooks
+    beforeCreate(){
+      alert('beforeCreate');
+
+    },
+    created(){
+      alert('created');
+    },
+    beforeMount(){
+      alert('before mount');
+    },
+    mounted(){
+      alert('mounted');
+    },
+    beforeUpdate(){
+      alert('before update');
+    },
+    updated(){
+      alert('updated');
     }
+
   }
 
 </script>
