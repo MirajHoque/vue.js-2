@@ -20,6 +20,21 @@
     <p>Blog Title:{{ blog.title }}</p>
     <p>Blog Content:</p>
     <p>{{ blog.content }}</p>
+    <p>Blog Categories</p>
+    <ul>
+      <li v-for="elements in blog.categories" :key="elements">{{ elements }}</li>
+    </ul>
+
+    <div id="checkBoxes">
+      <label for="">Ninjas</label>
+      <input type="checkbox" value="Ninjas" v-model="blog.categories"/>
+      <label for="">Wizards</label>
+      <input type="checkbox" value="Wizards" v-model="blog.categories"/>
+      <label for="">Mario</label>
+      <input type="checkbox" value="Mario" v-model="blog.categories"/>
+      <label for="">Cheese</label>
+      <input type="checkbox" value="Chesse" v-model="blog.categories"/>
+    </div>
   </form>
 
 </div>
@@ -31,7 +46,8 @@ export default {
     return {
       blog:{
         title:"",
-      content:""
+      content:"",
+      categories:[]
       }
       
     
@@ -71,6 +87,13 @@ input[type="text"], textarea{
 }
 h3{
   margin-top: 10px;
+}
+#checkBoxes input{
+  display: inline-block;
+  margin-right: 10px;
+}
+#checkBoxes label{
+  display: inline-block;
 }
 
 </style>>
