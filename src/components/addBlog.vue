@@ -1,7 +1,7 @@
 <template>
 <div id="add-blog">
   <h2>Add a new blog</h2>
-  <form action="">
+  <form action="" v-if="!submitted">
     <label for="">Blog Title:</label>
     <input type="text" v-model.lazy="blog.title" required/>
     <!--
@@ -15,18 +15,6 @@
     <label for="">Blog Content:</label>
     <textarea name="" id="" cols="30" rows="10" v-model.lazy="blog.content"></textarea>
     
-    <div id="preview"></div>
-    <h3>Preview Blog</h3>
-    <p>Blog Title:{{ blog.title }}</p>
-    <p>Blog Content:</p>
-    <p>{{ blog.content }}</p>
-    <p>Blog Categories</p>
-    <ul>
-      <li v-for="elements in blog.categories" :key="elements">{{ elements }}</li>
-    </ul>
-    <p>Author: {{ blog.author }}</p>
-
-
     <div id="checkBoxes">
       <label for="">Ninjas</label>
       <input type="checkbox" value="Ninjas" v-model="blog.categories"/>
@@ -42,7 +30,28 @@
     <select v-model="blog.author">
       <option v-for="element in authors" :key="element">{{ element }}</option>
     </select>
+
+    <button @click.prevent="post">Add Post</button>
+    <!--
+      v-on:click.prevent
+      //prevent: event modifer to prevent default behaviour
+    -->
   </form>
+
+  <div v-if="submitted">
+    <h3>Thanks for adding your post</h3>
+  </div>
+
+  <div id="preview"></div>
+    <h3>Preview Blog</h3>
+    <p>Blog Title:{{ blog.title }}</p>
+    <p>Blog Content:</p>
+    <p>{{ blog.content }}</p>
+    <p>Blog Categories</p>
+    <ul>
+      <li v-for="elements in blog.categories" :key="elements">{{ elements }}</li>
+    </ul>
+    <p>Author: {{ blog.author }}</p>
 
 </div>
 </template>
@@ -57,13 +66,28 @@ export default {
       categories: [],
       author: ""
       },
-      authors: ["The Net Ninja","The Angular Avenger","The Vue Indicator"]
+      authors: ["The Net Ninja","The Angular Avenger","The Vue Indicator"],
+      submitted: false //keep track the form is submitted or not
       
     
 
     }
   },
   methods:{
+    post: function(){
+      this.$http.post('https://jsonplaceholder.typicode.com/posts',{
+        title: this.blog.title,
+        body: this.blog.content,
+        userId:1
+
+      }).then(function(data){
+        console.log(data);
+        this.submitted= true;
+      });
+      //this refer to current component
+      //component.vue-resource.typeOfRequest('where we post in'(basically database),{content})
+      //in this case we are using JSONPlaceholder
+    }
     
   }
 

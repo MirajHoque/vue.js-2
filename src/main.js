@@ -2,8 +2,10 @@ import Vue from 'vue'
 //import vue in itself 
 import App from './App.vue'
 //import Hi from './App.vue'
-export const bus=new Vue();
-//import vue liabrary and export a instace of it.
+
+import vueResource from 'vue-resource'
+//vue-resource store in node modules
+Vue.use(vueResource);
 
 new Vue({
   el: '#app',
