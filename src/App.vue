@@ -2,7 +2,7 @@
 <div>
   <show-blogs></show-blogs>
 </div>
-
+/
 </template>
 
 <script>
