@@ -1,5 +1,5 @@
 <template>
-<div v-theme:column="'narrow'" id="show-blogs">
+<div id="show-blogs">
   <!--
     v-theme:column
     directive:argument
@@ -7,8 +7,8 @@
   <h1>All Bloags Articles</h1>
 
   <div v-for="element in blogs" :key=element class="single-blog">
-    <h2 v-rainbow>{{ element.title }}</h2>
-    <article>{{ element.body }}</article>
+    <h2 >{{ element.title | to-uppercase }}</h2>
+    <article>{{ element.body | snippet }}</article>
   </div>
  
 </div>
