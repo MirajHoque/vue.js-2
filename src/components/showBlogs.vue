@@ -5,8 +5,9 @@
     directive:argument
   -->
   <h1>All Bloags Articles</h1>
+  <input type="text" v-model="search" placeholder="search blogs">
 
-  <div v-for="element in blogs" :key=element class="single-blog">
+  <div v-for="element in filteredBlogs" :key=element class="single-blog">
     <h2 >{{ element.title | to-uppercase }}</h2>
     <article>{{ element.body | snippet }}</article>
   </div>
@@ -19,7 +20,8 @@
 export default {
   data() {
     return {
-      blogs: []
+      blogs: [],
+      search: ''
     
 
     }
@@ -32,6 +34,15 @@ export default {
       //console.log(data);
       this.blogs= data.body.slice(0,10)
     });
+  },
+  computed:{
+    filteredBlogs: function(){
+      return this.blogs.filter((item)=>{ //
+        return item.title.match(this.search)
+        //return Boolean;
+      })
+    }
+
   }
 
 }
