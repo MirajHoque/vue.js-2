@@ -4,12 +4,11 @@
     v-theme:column
     directive:argument
   -->
-  <h1>All Bloags Articles</h1>
+  <h1>List Blogs Title</h1>
   <input type="text" v-model="search" placeholder="search blogs">
 
   <div v-for="element in filteredBlogs" :key=element class="single-blog">
     <h2 v-rainbow>{{ element.title | to-uppercase }}</h2>
-    <article>{{ element.body | snippet }}</article>
   </div>
  
 </div>
@@ -38,7 +37,7 @@ export default {
     });
   },
   computed:{
-    
+
   },
   filters:{ //Registering filter locally
     'to-uppercase': function(value){
@@ -59,7 +58,7 @@ export default {
         }
       }
     },
- // mixins: [searchMixin],
+  mixins:[searchMixin]
 
   }
 
