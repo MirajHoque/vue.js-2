@@ -8,7 +8,7 @@
   <input type="text" v-model="search" placeholder="search blogs">
 
   <div v-for="element in filteredBlogs" :key=element class="single-blog">
-    <h2 >{{ element.title | to-uppercase }}</h2>
+    <h2 v-rainbow>{{ element.title | to-uppercase }}</h2>
     <article>{{ element.body | snippet }}</article>
   </div>
  
@@ -43,9 +43,29 @@ export default {
       })
     }
 
+  },
+  filters:{ //Registering filter locally
+    'to-uppercase': function(value){
+      //name of the filter: a function
+      return value.toUpperCase();
+      /*
+       //can be done by like this approach(confused to understand this approach)
+     toUppercase(value){
+       return value.toLowerCase();
+       */
+     }
+     
+    },
+  directives:{
+      'rainbow':{
+        bind(el,binding,vnode){
+          el.style.color="#"+ Math.random().toString(16).slice(2,8);
+        }
+      }
+    }
+
   }
 
-}
 </script>
 
 <style>
