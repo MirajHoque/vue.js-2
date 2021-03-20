@@ -7,10 +7,15 @@ import vueResource from 'vue-resource'
 //vue-resource store in node modules
 Vue.use(vueResource);
 
-//filters(globally creating)
-Vue.filter('to-uppercase',function(value){
-  return value.toUpperCase();
-})
+import vueRouter from 'vue-router'
+//vue-router stored in node module
+Vue.use(vueRouter);
+import Routes from './routes';
+const router= new vueRouter({
+  routes: Routes
+
+});
+
 Vue.filter('snippet',function(value){
   return value.slice(0,100)+ "...";
 })
@@ -19,8 +24,10 @@ Vue.filter('snippet',function(value){
 new Vue({
   el: '#app',
   
-  render: h => h(App) //render App.vue with id #app
+  render: h => h(App), //render App.vue with id #app
   //render: h => h(Hi)
   //render method:
   // h=>h(basically rendering App.vue to el:'#app')
+  router:router // this router is const variable
+
 })
