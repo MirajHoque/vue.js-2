@@ -12,7 +12,9 @@ import vueRouter from 'vue-router'
 Vue.use(vueRouter);
 import Routes from './routes';
 const router= new vueRouter({
-  routes: Routes
+  routes: Routes,
+  mode:'history' //default mode hash
+  //history: never show '#' in url
 
 });
 
@@ -28,6 +30,8 @@ new Vue({
   //render: h => h(Hi)
   //render method:
   // h=>h(basically rendering App.vue to el:'#app')
-  router:router // this router is const variable
+  router:router, // this router is const variable
+  
+  
 
 })
