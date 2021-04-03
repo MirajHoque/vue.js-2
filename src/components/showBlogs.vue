@@ -8,7 +8,7 @@
   <input type="text" v-model="search" placeholder="search blogs">
 
   <div v-for="element in filteredBlogs" :key=element class="single-blog">
-    <h2 v-rainbow>{{ element.title | to-uppercase }}</h2>
+    <router-link v-bind:to="'blog/'+element.id"><h2>{{ element.title | to-uppercase }}</h2></router-link>
     <article>{{ element.body | snippet }}</article>
   </div>
  
@@ -34,7 +34,7 @@ export default {
   created(){
     this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function(data){
       //console.log(data);
-      this.blogs= data.body.slice(0,10)
+      this.blogs= data.body;
     });
   },
   computed:{
